@@ -1,10 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import { Provider } from 'react-redux';
+import App from './components/Layout';
+import configureStore from './store';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// App-wide CSS defs
+import 'bootswatch/dist/flatly/bootstrap.min.css';
+import './stylesheets/index.css';
+import './stylesheets/animations.css';
+
+ReactDOM.render(
+	<Provider store={configureStore()}>
+		<App />
+	</Provider>,
+	document.getElementById('root')
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
